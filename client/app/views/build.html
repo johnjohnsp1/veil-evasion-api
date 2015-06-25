@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div ng-show="vm.payloadSelected">
+      <div>
+        <button class="btn btn-primary" ng-click="vm.reset()">Reset</button>
+      </div>
+    </div>
+    <br />
+    <h4>Payload Selection</h4>
+    <form>
+      <select name="payload" ng-model="vm.payload" ng-options="p for p in vm.payloads"></select>
+      <button class="btn btn-primary" ng-click="vm.getPayloadOptions()">Get Options</button>
+    </form>
+    <br />
+    <div ng-show="vm.payloadSelected">
+      <h4>Payload Options</h4>
+      <form id="generate-form" class="form-horizontal">
+        <div ng-repeat="option in vm.payloadOptions">
+          <div class="form-group">
+            <label class="col-xs-2 control-label" style="text-align: left">{{option.key}}</label>
+            <div class="col-xs-8">
+              <input name="{{option.key}}" class="form-control input-xs" type="text" value="{{option.default_value}}" placeholder="{{option.value}}">
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" ng-click="vm.generatePayload()">Generate</button>
+      </form>
+    </div>
+    <br />
+    <div ng-show="vm.payloadGenerated">
+      <h4>Payload Generated</h4>
+      <a ng-href="{{vm.generatedPayload}}">{{vm.generatedPayload}}</a>
+    </div>
+  </div>
+</div>

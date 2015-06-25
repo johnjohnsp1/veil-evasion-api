@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="app">
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Veil-Evasion API</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+  <script src="bundle.js"></script>
+</head>
+
+<body ng-controller="ApplicationController as app" ng-cloak>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/#/">VEIL-EVASION API</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Veil-Evasion version: {{app.version}}</a></li>
+        </ul>
+      </div>
+    <div>
+  </nav>
+  <div class="container">
+    <div class="row" ng-show="errorMessage">
+      <div class="col-xs-12">
+        <div class="alert alert-danger">
+          <button type="button" class="close" ng-click="app.dismiss()">&times;</button>
+          <strong>Error:</strong> {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-show="successMessage">
+      <div class="col-xs-12">
+        <div class="alert alert-success">
+          <button type="button" class="close" ng-click="app.dismiss()">&times;</button>
+          <strong>Success:</strong> {{ successMessage }}
+        </div>
+      </div>
+    </div>
+    <div ng-view=""></div>
+  </div>
+</body>
+
+</html>
