@@ -10,7 +10,6 @@ import (
 	"path"
 
 	"github.com/mholt/binding"
-	"github.com/tomsteele/veil-evasion-api/veil"
 	"github.com/unrolled/render"
 )
 
@@ -42,17 +41,17 @@ func (h *H) JSON400(w http.ResponseWriter, err error) {
 }
 
 func (h *H) Version(w http.ResponseWriter, req *http.Request) {
-	var v veil.Version
+	var v string
 	err := h.C.Call("version", []string{}, &v)
 	if err != nil {
 		h.JSON500(w, err)
 		return
 	}
-	h.JSON(w, map[string]veil.Version{"version": v})
+	h.JSON(w, map[string]string{"version": v})
 }
 
 func (h *H) Payloads(w http.ResponseWriter, req *http.Request) {
-	var payloads veil.Payloads
+	var payloads []string
 	err := h.C.Call("payloads", []string{}, &payloads)
 	if err != nil {
 		h.JSON500(w, err)
@@ -73,7 +72,7 @@ func (h *H) PayloadOptions(w http.ResponseWriter, req *http.Request) {
 		h.JSON400(w, errors.New("payload query parameter missing"))
 		return
 	}
-	var options veil.PayloadOptions
+	var options [][]string
 	var thing json.RawMessage
 	err := h.C.Call("payload_options", []string{p}, &thing)
 	if err != nil {
