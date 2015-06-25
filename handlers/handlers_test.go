@@ -2,12 +2,13 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/tomsteele/veil-evasion-api/myrpc"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"net/rpc"
 	"os"
+
+	"github.com/tomsteele/veil-evasion-api/myrpc"
 
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
