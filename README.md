@@ -8,7 +8,7 @@ The easiest way to install is to use the docker image. This will start Veil-Evas
 #### Using Docker
 ```
 $ docker pull tomsteele/veil-evasion-api
-$ docker run --rm -e ADMIN_USER=someuser -e ADMIN_PASS=somesecret -p 80:80 tomsteele/veil-evasion
+$ docker run --rm -e ADMIN_USER=someuser -e ADMIN_PASS=somesecret -p 80:80 tomsteele/veil-evasion-api
 ```
 
 #### Building
@@ -27,7 +27,7 @@ $ npm run-script build
 $ mv dist ../public
 ```
 
-This project uses godep. To compile and run the server, do the following (change environment variables as needed:
+This project uses godep. To compile and run the server, do the following (change environment variables as needed):
 ```
 $ go get github.com/tools/godep
 $ export VEIL_LISTENER=localhost:4242
@@ -53,7 +53,7 @@ func main() {
 ```
 
 ## Security
-Before deploying there are a few things you should consider
+Before deploying there are a few things you should consider:
  - The server uses basic auth with a shared username and password for authentication.
  - Payloads do not require authentication to assist with delivery.
  - CSRF is prevented by enforcing content-type of application/json
