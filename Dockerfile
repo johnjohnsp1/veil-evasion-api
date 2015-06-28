@@ -29,6 +29,8 @@ ADD . /go/src/github.com/tomsteele/veil-evasion-api
 RUN go get github.com/tools/godep
 RUN cd /go/src/github.com/tomsteele/veil-evasion-api && godep restore
 RUN go install github.com/tomsteele/veil-evasion-api
+# fix path so veil go payloads work
+ENV PATH /usr/bin:$PATH
 
 # build client
 RUN cd /go/src/github.com/tomsteele/veil-evasion-api/client && npm i && npm run-script build
